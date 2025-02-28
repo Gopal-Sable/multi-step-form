@@ -2,122 +2,245 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- displays site properly based on user's device -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
-  <title>Multi-step form</title>
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Multi-step form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        /* .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        } */
+    </style>
 </head>
 
-<body class="bg-[var(--light-gray)] flex justify-center items-center min-h-screen">
+<body class="h-full bg-[var(--light-gray)]">
+    <main class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[70%]">
+        <!-- Sidebar start -->
 
-  <!-- Step 1 Your info Step 2 Select plan Step 3 Add-ons Step 4 Summary -->
-  <div class="container w-[55vw] bg-white h-[60vh]  rounded-2xl flex flex-row p-2">
+        <aside
+            class="w-[30%] text-white flex flex-col rounded-[10px] bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-center bg-no-repeat bg-cover m-6">
+            <div class="flex items-center px-8 mt-8 gap-4">
+                <div
+                    class="w-8 h-8 flex items-center justify-center bg-[var(--light-blue)] rounded-full border-[white] border text-black font-bold">
+                    1
+                </div>
+                <div>
+                    <p class="text-xs uppercase opacity-75">Step 1</p>
+                    <h2 class="font-semibold">Your Info</h2>
+                </div>
+            </div>
 
-    <!-- Sidebar start -->
-    <div class="bg-no-repeat w-[28%] rounded-2xl  bg-cover " id="sidebar">
-      <div class="flex text-[var(--white)] m-5">
-        <div class="bg-[var(--light-blue)] w-12 mr-6 flex justify-center items-center text-black rounded-[50%] ">1</div>
-        <div>
-          <span class="text-[var(--cool-gray)]">STEP 1</span>
-          <h3>YOUR INFO</h3>
+            <div class="flex items-center px-8 mt-8 gap-4">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border font-bold">
+                    2
+                </div>
+                <div>
+                    <p class="text-xs text-[var(----cool-gray)] opacity-75">Step 2</p>
+                    <h2 class="font-semibold ">Select Plan</h2>
+                </div>
+            </div>
+
+            <div class="flex items-center px-8 mt-8 gap-4">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border  font-bold">
+                    3
+                </div>
+                <div>
+                    <p class="text-xs text-[var(----cool-gray)]  opacity-75">Step 3</p>
+                    <h2 class="font-semibold ">Add-Ons</h2>
+                </div>
+            </div>
+
+            <div class="flex items-center px-8 mt-8 gap-4">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border  font-bold">
+                    4
+                </div>
+                <div>
+                    <p class="text-xs text-[var(----cool-gray)] uppercase opacity-75">Step 4</p>
+                    <h2 class="font-semibold">Summary</h2>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sidebar end -->
+
+        <div class="flex grow flex-col justify-between mr-36">
+            <!-- Step 1 start -->
+            <!-- <section class="flex flex-col text-[var(--marine-blue)]">
+                <h1 class="text-3xl font-bold mt-12 ">Personal info</h1>
+                <p class="mt-4 text-[var(--cool-gray)]">
+                    Please provide your name, email address, and phone number.
+                </p>
+
+                <div class="mt-6 flex flex-col gap-5">
+                    <div class="flex flex-col">
+                        <div class="flex justify-between">
+                            <label for="name" class="">Name</label>
+                            <span class="text-[var(--strawberry-red)]">Error</span>
+                        </div>
+                        <input type="text" id="name" placeholder="e.g. Stephen King"
+                            class="border rounded-[10px] outline-none border-[var(--cool-gray)] mt-1 p-2" />
+                    </div>
+
+                    <div class="flex flex-col">
+                        <div class="flex justify-between">
+                            <label for="email" class="">Email Address</label>
+                            <span class="text-[var(--strawberry-red)]">Error</span>
+                        </div>
+                        <input type="text" id="email" placeholder="e.g. stephenking@lorem.com"
+                            class="border rounded-[10px] outline-none border-[var(--cool-gray)] mt-1 p-2" />
+                    </div>
+
+                    <div class="flex flex-col">
+                        <div class="flex justify-between">
+                            <label for="phone" class="">Phone Number</label>
+                            <span class="text-[var(--strawberry-red)]">Error</span>
+                        </div>
+                        <input type="text" id="phone" placeholder="e.g. +1 234 567 890"
+                            class="border rounded-[10px] outline-none border-[var(--cool-gray)] mt-1 p-2" />
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Step 1 end -->
+
+            <!-- Step 2 start -->
+
+            <section class="flex flex-col text-[var(--marine-blue)]">
+                <h1 class="text-3xl font-bold mt-12 "> Select your plan</h1>
+                <p class="mt-4 text-[var(--cool-gray)]">
+                    You have the option of monthly or yearly billing.
+                </p>
+
+                <div class="mt-6 flex flex-col gap-5">
+
+                </div>
+
+                <div class="flex justify-between mt-4">
+                    <div for="plan-1" class="border p-2 rounded-2xl min-w-40">
+                        <input type="radio" id="plan-1" name="plan" class="hidden">
+                        <label for="plan-1">
+                            <img class="mb-5 mr-auto" src="assets/images/icon-arcade.svg" alt="">
+                            <div class="mr-12 mt-12">
+                                <h4>Acrade</h4>
+                                <span>$9/mo</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div for="plan-2">
+                        <input type="radio" id="plan-2" name="plan">
+                        <label for="plan-2">
+                            <img src="assets/images/icon-advanced.svg" alt="">
+                            <h4>Advanced</h4>
+                            <span>$12/mo</span>
+                        </label>
+                    </div>
+                    <div>
+                        <img src="assets/images/icon-advanced.svg" alt="">
+                        <h4>Advanced</h4>
+                        <span>$12/mo</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="">Monthly</label>
+
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" id="plans-switch" class="sr-only peer">
+                            <div
+                                class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 
+                          peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full 
+                          peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] 
+                          after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
+                          dark:border-gray-600 peer-checked:bg-[hsl(213,96%,18%)] dark:peer-checked:bg-[hsl(213,96%,18%)]">
+                            </div>
+                        </label>
+                    </label>
+
+                    <label>Yearly</label>
+                </div>
+            </section>
+
+
+            <!-- Select your plan You have the option of monthly or yearly billing. Arcade
+          $9/mo Advanced $12/mo Pro $15/mo Monthly Yearly Go Back Next Step -->
+
+            <!-- Step 2 end -->
+
+            <!-- Step 3 start -->
+
+            <!-- Pick add-ons Add-ons help enhance your gaming experience. Online service
+          Access to multiplayer games +$1/mo Larger storage Extra 1TB of cloud save
+          +$2/mo Customizable Profile Custom theme on your profile +$2/mo Go Back
+          Next Step -->
+
+            <!-- Step 3 end -->
+
+            <!-- Step 4 start -->
+
+            <!-- Finishing up Double-check everything looks OK before confirming. -->
+
+            <!-- Dynamically add subscription and add-on selections here -->
+
+            <!-- Total (per month/year) Go Back Confirm -->
+
+            <!-- Step 4 end -->
+
+            <!-- Step 5 start -->
+
+            <!-- Thank you! Thanks for confirming your subscription! We hope you have fun
+          using our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com. -->
+
+            <!-- Step 5 end -->
+
+            <div class="flex justify-between mb-5">
+                <button class="self-end">Previous</button>
+                <button class="rounded-sm bg-[var(--marine-blue)] text-white p-3">
+                    Next Step
+                </button>
+            </div>
         </div>
-      </div>
-
-      <div class="flex text-[var(--white)] w-[72%] m-5">
-        <div class=" w-12 mr-6 flex justify-center items-center border rounded-[50%] ">2</div>
-        <div>
-          <span class="text-[var(--cool-gray)]">STEP 2</span>
-          <h3>SELECT PLANS</h3>
-        </div>
-      </div>
-      <div class="flex text-[var(--white)] m-5">
-        <div class=" w-12 mr-6 flex justify-center items-center border rounded-[50%] ">3</div>
-        <div>
-          <span class="text-[var(--cool-gray)]">STEP 3</span>
-          <h3>ADD-ONS</h3>
-        </div>
-      </div>
-      <div class="flex text-[var(--white)] m-5">
-        <div class=" w-12 mr-6 flex justify-center items-center border rounded-[50%] ">4</div>
-        <div>
-          <span class="text-[var(--cool-gray)]">STEP 4</span>
-          <h3>SUMMARY</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sidebar end -->
-
-    <!-- Step 1 start -->
-    <div>
-
-      <h1 class="text-3xl text-[var( --marine-blues)] m-2">
-        Personal info
-      </h1>
-      <p class="text-[var(--cool-gray)] m-2">
-        Please provide your name, email address, and phone number.
-      </p>
-      <div class="flex flex-col m-3">
-        <label for=""> Name</label>
-        <input type="text" class="border-[var(--cool-gray)] h-10 border p-2 rounded-sm" placeholder=" e.g. Stephen King">
-      </div>
-
-      <div class="flex flex-col m-3">
-        <label for=""> Email Address</label>
-        <input type="email" class="border-[var(--cool-gray)] h-10 p-2 border rounded-sm"
-          placeholder="  e.g. stephenking@lorem.com">
-      </div>
-
-      <div class="flex flex-col m-3">
-        <label for=""> Phone Number</label>
-        <input type="email" class="border-[var(--cool-gray)] h-10 p-2 border rounded-sm" placeholder=" e.g. +1 234 567 890">
-      </div>
-
-      <button class="rounded-sm bg-[var(--marine-blue)] text-white p-3 right-112 bottom-46 absolute">
-        Next Step
-      </button>
-
-    </div>
-
-    <!-- Step 1 end -->
-  </div>
-
-  <!-- Step 2 start -->
-
-  <!-- Select your plan You have the option of monthly or yearly billing. Arcade
-  $9/mo Advanced $12/mo Pro $15/mo Monthly Yearly Go Back Next Step -->
-
-  <!-- Step 2 end -->
-
-  <!-- Step 3 start -->
-
-  <!-- Pick add-ons Add-ons help enhance your gaming experience. Online service
-  Access to multiplayer games +$1/mo Larger storage Extra 1TB of cloud save
-  +$2/mo Customizable Profile Custom theme on your profile +$2/mo Go Back Next
-  Step -->
-
-  <!-- Step 3 end -->
-
-  <!-- Step 4 start -->
-
-  <!-- Finishing up Double-check everything looks OK before confirming. -->
-
-  <!-- Dynamically add subscription and add-on selections here -->
-
-  <!-- Total (per month/year) Go Back Confirm -->
-
-  <!-- Step 4 end -->
-
-  <!-- Step 5 start -->
-
-  <!-- Thank you! Thanks for confirming your subscription! We hope you have fun
-  using our platform. If you ever need support, please feel free to email us
-  at support@loremgaming.com. -->
-
-  <!-- Step 5 end -->
+    </main>
 </body>
 
 </html>
+
+<!-- 
+<div class="_planList_tfbqj_1" role="radiogroup">
+    <legend class="sr-only">Select your plan</legend>
+    <div class="_planWrapper_tfbqj_7">
+        <input id="radio-monthly_arcade" type="radio" name="plan" class="_planRadio_tfbqj_11" value="monthly_arcade"
+            checked="">
+        <label for="radio-monthly_arcade" class="_plan_tfbqj_1"><img src="assets/images/icon-arcade.svg"
+                class="_planIcon_tfbqj_40">
+            <p class="_planName_tfbqj_48">Arcade</p>
+            <p class="_planPrice_tfbqj_54">$9/mo</p>
+        </label>
+    </div>
+    <div class="_planWrapper_tfbqj_7"><input id="radio-monthly_advanced" type="radio" name="plan"
+            class="_planRadio_tfbqj_11" value="monthly_advanced"><label for="radio-monthly_advanced"
+            class="_plan_tfbqj_1"><img src="assets/images/icon-advanced.svg" class="_planIcon_tfbqj_40">
+            <p class="_planName_tfbqj_48">Advanced</p>
+            <p class="_planPrice_tfbqj_54">$12/mo</p>
+        </label></div>
+    <div class="_planWrapper_tfbqj_7"><input id="radio-monthly_pro" type="radio" name="plan" class="_planRadio_tfbqj_11"
+            value="monthly_pro"><label for="radio-monthly_pro" class="_plan_tfbqj_1"><img
+                src="assets/images/icon-pro.svg" class="_planIcon_tfbqj_40">
+            <p class="_planName_tfbqj_48">Pro</p>
+            <p class="_planPrice_tfbqj_54">$15/mo</p>
+        </label></div>
+</div> -->
