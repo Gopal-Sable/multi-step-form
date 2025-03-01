@@ -82,7 +82,7 @@
 
         <div class="flex grow flex-col justify-between mr-36">
             <!-- Step 1 start -->
-            <section hidden id="section1" class="flex flex-col text-[var(--marine-blue)]">
+            <section id="section1" hidden class="flex flex-col text-[var(--marine-blue)]">
                 <h1 class="text-3xl font-bold mt-12 ">Personal info</h1>
                 <p class="mt-4 text-[var(--cool-gray)]">
                     Please provide your name, email address, and phone number.
@@ -122,7 +122,7 @@
 
             <!-- Step 2 start -->
 
-            <section id="section2" hidden class="flex flex-col text-[var(--marine-blue)]">
+            <section id="section2"   class="flex flex-col text-[var(--marine-blue)]">
                 <h1 class="text-3xl font-bold mt-12 "> Select your plan</h1>
                 <p class="mt-4 text-[var(--cool-gray)]">
                     You have the option of monthly or yearly billing.
@@ -132,42 +132,45 @@
 
                 </div>
 
-                <div class="flex justify-between mt-4">
+                <div id="plans" class="flex justify-between mt-4">
                     <!-- Arcade Plan -->
                     <div class=" p-2 min-w-30">
-                        <input type="radio" checked id="plan-arcade" name="plan" class="hidden peer">
+                        <input type="radio" checked id="plan-arcade" name="plan" value="9" class="hidden peer">
                         <label for="plan-arcade"
                             class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 peer-checked:bg-blue-100 peer-checked:border-blue-500">
                             <img class="mb-5 mr-auto" src="assets/images/icon-arcade.svg" alt="">
                             <div class="mr-12 mt-12">
                                 <h4>Arcade</h4>
                                 <span>$9/mo</span>
+                                <!-- <p>2-months free</p> -->
                             </div>
                         </label>
                     </div>
 
                     <!-- Advanced Plan -->
                     <div class=" p-2 min-w-30">
-                        <input type="radio" id="plan-advanced" name="plan" class="hidden peer">
+                        <input type="radio" id="plan-advanced" name="plan" value="12" class="hidden peer">
                         <label for="plan-advanced"
                             class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 peer-checked:bg-blue-100 peer-checked:border-blue-500">
                             <img class="mb-5 mr-auto" src="assets/images/icon-advanced.svg" alt="">
                             <div class="mr-12 mt-12">
                                 <h4>Advanced</h4>
                                 <span>$12/mo</span>
+                              
                             </div>
                         </label>
                     </div>
 
                     <!-- Pro Plan -->
                     <div class="p-2 min-w-40">
-                        <input type="radio" id="plan-pro" name="plan" class="hidden peer">
+                        <input type="radio" id="plan-pro" name="plan" value="15" class="hidden peer">
                         <label for="plan-pro"
                             class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 peer-checked:bg-blue-100 peer-checked:border-blue-500">
                             <img class="mb-5 mr-auto" src="assets/images/icon-pro.svg" alt="">
                             <div class="mr-12 mt-12">
                                 <h4>Pro</h4>
                                 <span>$15/mo</span>
+                                
                             </div>
                         </label>
                     </div>
@@ -175,21 +178,16 @@
 
                 <div class="flex mt-5 bg-[var(--alabaster)] justify-center p-4">
                     <label class="mr-5  font-semibold">Monthly</label>
-
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" checked>
-                        <label class="flex items-center cursor-pointer">
-                            <input type="checkbox" id="plans-switch" class="sr-only peer">
-                            <div
-                                class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="plans-switch" value="off" class="sr-only peer">
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 
                           peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full 
                           peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] 
                           after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
                           dark:border-gray-600 peer-checked:bg-[hsl(213,96%,18%)] dark:peer-checked:bg-[hsl(213,96%,18%)]">
-                            </div>
-                        </label>
+                        </div>
                     </label>
-
                     <label class="ml-5 font-semibold">Yearly</label>
                 </div>
             </section>
@@ -197,7 +195,7 @@
 
             <!-- Step 3 start -->
 
-            <section hidden id="section3" class="flex flex-col text-[var(--marine-blue)]">
+            <section  id="section3"   class="flex flex-col text-[var(--marine-blue)]">
                 <h1 class="text-3xl font-bold mt-12 ">Pick add-ons </h1>
                 <p class="mt-4 text-[var(--cool-gray)]">
                     Add-ons help enhance your gaming experience.
@@ -216,7 +214,7 @@
                         </label>
                     </div>
                     <div class="flex border p-4 rounded-2xl">
-                        <input type="checkbox" class="m-4 w-[30px]" name="add-ons" id="storage">
+                        <input type="checkbox"  class="m-4 w-[30px]" name="add-ons" id="storage">
                         <label for="storage" class="flex justify-between w-full items-center">
                             <div>
                                 <h4 class="text-[var(--marine-blue)] font-bold">Larger storage </h4>
@@ -245,7 +243,7 @@
 
             <!-- Step 4 start -->
 
-            <section id="section4" class="flex flex-col text-[var(--marine-blue)]">
+            <section id="section4"  class="flex flex-col text-[var(--marine-blue)]">
                 <h1 class="text-3xl font-bold mt-12 ">Finishing up</h1>
                 <p class="mt-4 text-[var(--cool-gray)]">
                     Double-check everything looks OK before confirming.
@@ -257,41 +255,41 @@
                             <h4>Arcade(Monthly)</h4>
                             <input type="button" value="change">
                         </div>
-                        <span>$9/mo</span>
+                        <span id="selected-plan-amount">$9/mo</span>
                     </div>
-                    <hr class="text-center p-4 text-[var(--cool-gray)]">
+                    <hr class="text-center p-4 w-[95%] mx-auto text-[var(--cool-gray)]">
                     <ul class="m-2">
+                        <!-- <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
                         <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
-                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
-                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
+                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li> -->
                     </ul>
                 </div>
 
-                <div class="flex justify-between items-center p-4">
-                    <span>Total (per year)</span>
-                    <span>+$100/mo</span>
+                <div id="total-amount-container" class="flex justify-between items-center p-4">
+                    <span></span>
+                    <span ></span>
                 </div>
 
 
             </section>
-            <!-- -->
-
-            <!-- Dynamically add subscription and add-on selections here -->
-
-            <!-- Total (per month/year) Go Back Confirm -->
-
             <!-- Step 4 end -->
 
             <!-- Step 5 start -->
+            <section id="section5" hidden class="flex flex-col justify-center items-center h-full">
+                <img src="./assets/images/icon-thank-you.svg" alt="">
+                <h1 class="text-3xl font-bold text-[var(--marine-blue)] m-4">Thank you!</h1>
+                <p class="text-center text-[var(--cool-gray)]">
+                    Thanks for confirming your subscription! We hope you have fun
+                    using our platform. If you ever need support, please feel free to email us
+                    at support@loremgaming.com.
+                </p>
+            </section>
 
-            <!-- Thank you! Thanks for confirming your subscription! We hope you have fun
-          using our platform. If you ever need support, please feel free to email us
-          at support@loremgaming.com. -->
 
             <!-- Step 5 end -->
 
-            <div class="flex justify-between mb-5">
-                <button class="self-end">Previous</button>
+            <div id="buttonsSection" class="flex justify-between mb-5">
+                <button id="prevBtn" class="self-end">Previous</button>
                 <button id="nextBtn" type="submit" class="rounded-sm bg-[var(--marine-blue)] text-white p-3">
                     Next Step
                 </button>
@@ -302,29 +300,3 @@
 </body>
 
 </html>
-
-<!-- 
-<div class="_planList_tfbqj_1" role="radiogroup">
-    <legend class="sr-only">Select your plan</legend>
-    <div class="_planWrapper_tfbqj_7">
-        <input id="radio-monthly_arcade" type="radio" name="plan" class="_planRadio_tfbqj_11" value="monthly_arcade"
-            checked="">
-        <label for="radio-monthly_arcade" class="_plan_tfbqj_1"><img src="assets/images/icon-arcade.svg"
-                class="_planIcon_tfbqj_40">
-            <p class="_planName_tfbqj_48">Arcade</p>
-            <p class="_planPrice_tfbqj_54">$9/mo</p>
-        </label>
-    </div>
-    <div class="_planWrapper_tfbqj_7"><input id="radio-monthly_advanced" type="radio" name="plan"
-            class="_planRadio_tfbqj_11" value="monthly_advanced"><label for="radio-monthly_advanced"
-            class="_plan_tfbqj_1"><img src="assets/images/icon-advanced.svg" class="_planIcon_tfbqj_40">
-            <p class="_planName_tfbqj_48">Advanced</p>
-            <p class="_planPrice_tfbqj_54">$12/mo</p>
-        </label></div>
-    <div class="_planWrapper_tfbqj_7"><input id="radio-monthly_pro" type="radio" name="plan" class="_planRadio_tfbqj_11"
-            value="monthly_pro"><label for="radio-monthly_pro" class="_plan_tfbqj_1"><img
-                src="assets/images/icon-pro.svg" class="_planIcon_tfbqj_40">
-            <p class="_planName_tfbqj_48">Pro</p>
-            <p class="_planPrice_tfbqj_54">$15/mo</p>
-        </label></div>
-</div> -->
