@@ -27,13 +27,14 @@
 </head>
 
 <body class="h-full bg-[var(--light-gray)]">
-    <main class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[70%]">
+    <form class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[70%]">
         <!-- Sidebar start -->
 
-        <aside
+        <aside id="steps-side-bar"
             class="w-[30%] text-white flex flex-col rounded-[10px] bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-center bg-no-repeat bg-cover m-6">
+            <!-- <img src="/assets/images/bg-sidebar-desktop.svg" alt="" srcset=""> -->
             <div class="flex items-center px-8 mt-8 gap-4">
-                <div
+                <div id="step1"
                     class="w-8 h-8 flex items-center justify-center bg-[var(--light-blue)] rounded-full border-[white] border text-black font-bold">
                     1
                 </div>
@@ -44,7 +45,8 @@
             </div>
 
             <div class="flex items-center px-8 mt-8 gap-4">
-                <div class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border font-bold">
+                <div id="step2"
+                    class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border font-bold">
                     2
                 </div>
                 <div>
@@ -54,7 +56,8 @@
             </div>
 
             <div class="flex items-center px-8 mt-8 gap-4">
-                <div class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border  font-bold">
+                <div id="step3"
+                    class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border  font-bold">
                     3
                 </div>
                 <div>
@@ -64,7 +67,8 @@
             </div>
 
             <div class="flex items-center px-8 mt-8 gap-4">
-                <div class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border  font-bold">
+                <div id="step4"
+                    class="w-8 h-8 flex items-center justify-center rounded-full border-[white] border  font-bold">
                     4
                 </div>
                 <div>
@@ -78,7 +82,7 @@
 
         <div class="flex grow flex-col justify-between mr-36">
             <!-- Step 1 start -->
-            <!-- <section class="flex flex-col text-[var(--marine-blue)]">
+            <section hidden id="section1" class="flex flex-col text-[var(--marine-blue)]">
                 <h1 class="text-3xl font-bold mt-12 ">Personal info</h1>
                 <p class="mt-4 text-[var(--cool-gray)]">
                     Please provide your name, email address, and phone number.
@@ -88,7 +92,7 @@
                     <div class="flex flex-col">
                         <div class="flex justify-between">
                             <label for="name" class="">Name</label>
-                            <span class="text-[var(--strawberry-red)]">Error</span>
+                            <span class="text-[var(--strawberry-red)]"></span>
                         </div>
                         <input type="text" id="name" placeholder="e.g. Stephen King"
                             class="border rounded-[10px] outline-none border-[var(--cool-gray)] mt-1 p-2" />
@@ -97,28 +101,28 @@
                     <div class="flex flex-col">
                         <div class="flex justify-between">
                             <label for="email" class="">Email Address</label>
-                            <span class="text-[var(--strawberry-red)]">Error</span>
+                            <span class="text-[var(--strawberry-red)]"></span>
                         </div>
-                        <input type="text" id="email" placeholder="e.g. stephenking@lorem.com"
+                        <input type="email" id="email" placeholder="e.g. stephenking@lorem.com"
                             class="border rounded-[10px] outline-none border-[var(--cool-gray)] mt-1 p-2" />
                     </div>
 
                     <div class="flex flex-col">
                         <div class="flex justify-between">
                             <label for="phone" class="">Phone Number</label>
-                            <span class="text-[var(--strawberry-red)]">Error</span>
+                            <span class="text-[var(--strawberry-red)]"></span>
                         </div>
-                        <input type="text" id="phone" placeholder="e.g. +1 234 567 890"
+                        <input type="number" id="phone" placeholder="e.g. +1 234 567 890"
                             class="border rounded-[10px] outline-none border-[var(--cool-gray)] mt-1 p-2" />
                     </div>
                 </div>
-            </section> -->
+            </section>
 
             <!-- Step 1 end -->
 
             <!-- Step 2 start -->
 
-            <section class="flex flex-col text-[var(--marine-blue)]">
+            <section id="section2" hidden class="flex flex-col text-[var(--marine-blue)]">
                 <h1 class="text-3xl font-bold mt-12 "> Select your plan</h1>
                 <p class="mt-4 text-[var(--cool-gray)]">
                     You have the option of monthly or yearly billing.
@@ -129,32 +133,48 @@
                 </div>
 
                 <div class="flex justify-between mt-4">
-                    <div for="plan-1" class="border p-2 rounded-2xl min-w-40">
-                        <input type="radio" id="plan-1" name="plan" class="hidden">
-                        <label for="plan-1">
+                    <!-- Arcade Plan -->
+                    <div class=" p-2 min-w-30">
+                        <input type="radio" checked id="plan-arcade" name="plan" class="hidden peer">
+                        <label for="plan-arcade"
+                            class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 peer-checked:bg-blue-100 peer-checked:border-blue-500">
                             <img class="mb-5 mr-auto" src="assets/images/icon-arcade.svg" alt="">
                             <div class="mr-12 mt-12">
-                                <h4>Acrade</h4>
+                                <h4>Arcade</h4>
                                 <span>$9/mo</span>
                             </div>
                         </label>
                     </div>
-                    <div for="plan-2">
-                        <input type="radio" id="plan-2" name="plan">
-                        <label for="plan-2">
-                            <img src="assets/images/icon-advanced.svg" alt="">
-                            <h4>Advanced</h4>
-                            <span>$12/mo</span>
+
+                    <!-- Advanced Plan -->
+                    <div class=" p-2 min-w-30">
+                        <input type="radio" id="plan-advanced" name="plan" class="hidden peer">
+                        <label for="plan-advanced"
+                            class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 peer-checked:bg-blue-100 peer-checked:border-blue-500">
+                            <img class="mb-5 mr-auto" src="assets/images/icon-advanced.svg" alt="">
+                            <div class="mr-12 mt-12">
+                                <h4>Advanced</h4>
+                                <span>$12/mo</span>
+                            </div>
                         </label>
                     </div>
-                    <div>
-                        <img src="assets/images/icon-advanced.svg" alt="">
-                        <h4>Advanced</h4>
-                        <span>$12/mo</span>
+
+                    <!-- Pro Plan -->
+                    <div class="p-2 min-w-40">
+                        <input type="radio" id="plan-pro" name="plan" class="hidden peer">
+                        <label for="plan-pro"
+                            class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 peer-checked:bg-blue-100 peer-checked:border-blue-500">
+                            <img class="mb-5 mr-auto" src="assets/images/icon-pro.svg" alt="">
+                            <div class="mr-12 mt-12">
+                                <h4>Pro</h4>
+                                <span>$15/mo</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
-                <div>
-                    <label class="">Monthly</label>
+
+                <div class="flex mt-5 bg-[var(--alabaster)] justify-center p-4">
+                    <label class="mr-5  font-semibold">Monthly</label>
 
                     <label class="inline-flex items-center cursor-pointer">
                         <input type="checkbox" value="" class="sr-only peer" checked>
@@ -170,28 +190,91 @@
                         </label>
                     </label>
 
-                    <label>Yearly</label>
+                    <label class="ml-5 font-semibold">Yearly</label>
                 </div>
             </section>
-
-
-            <!-- Select your plan You have the option of monthly or yearly billing. Arcade
-          $9/mo Advanced $12/mo Pro $15/mo Monthly Yearly Go Back Next Step -->
-
             <!-- Step 2 end -->
 
             <!-- Step 3 start -->
 
-            <!-- Pick add-ons Add-ons help enhance your gaming experience. Online service
-          Access to multiplayer games +$1/mo Larger storage Extra 1TB of cloud save
-          +$2/mo Customizable Profile Custom theme on your profile +$2/mo Go Back
-          Next Step -->
+            <section hidden id="section3" class="flex flex-col text-[var(--marine-blue)]">
+                <h1 class="text-3xl font-bold mt-12 ">Pick add-ons </h1>
+                <p class="mt-4 text-[var(--cool-gray)]">
+                    Add-ons help enhance your gaming experience.
+                </p>
+
+
+                <div class="flex mt-10 flex-col gap-4">
+                    <div class="flex border p-4 rounded-2xl">
+                        <input type="checkbox" class="m-4 w-[30px]" name="online-service" id="online-service">
+                        <label for="online-service" class="flex justify-between w-full items-center">
+                            <div>
+                                <h4 class="text-[var(--marine-blue)] font-bold"> Online Service</h4>
+                                <p class="text-[var(--cool-gray)]">Access to multiplayer games </p>
+                            </div>
+                            <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
+                        </label>
+                    </div>
+                    <div class="flex border p-4 rounded-2xl">
+                        <input type="checkbox" class="m-4 w-[30px]" name="add-ons" id="storage">
+                        <label for="storage" class="flex justify-between w-full items-center">
+                            <div>
+                                <h4 class="text-[var(--marine-blue)] font-bold">Larger storage </h4>
+                                <p class="text-[var(--cool-gray)]">Extra 1TB of cloud save </p>
+                            </div>
+                            <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
+                        </label>
+                    </div>
+                    <div class="flex border p-4 rounded-2xl">
+                        <input type="checkbox" class="m-4 w-[30px]" name="add-ons" id="profile">
+                        <label for="profile" class="flex justify-between w-full items-center">
+                            <div>
+                                <h4 class="text-[var(--marine-blue)] font-bold"> Customizable Profile </h4>
+                                <p class="text-[var(--cool-gray)]">Customizable Profile Custom theme on your profile
+                                </p>
+                            </div>
+                            <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
+                        </label>
+                    </div>
+                </div>
+
+
+            </section>
 
             <!-- Step 3 end -->
 
             <!-- Step 4 start -->
 
-            <!-- Finishing up Double-check everything looks OK before confirming. -->
+            <section id="section4" class="flex flex-col text-[var(--marine-blue)]">
+                <h1 class="text-3xl font-bold mt-12 ">Finishing up</h1>
+                <p class="mt-4 text-[var(--cool-gray)]">
+                    Double-check everything looks OK before confirming.
+                </p>
+
+                <div class=" mt-10 bg-[var(--alabaster)] rounded-2xl p-4">
+                    <div class="flex items-center m-2  justify-between">
+                        <div>
+                            <h4>Arcade(Monthly)</h4>
+                            <input type="button" value="change">
+                        </div>
+                        <span>$9/mo</span>
+                    </div>
+                    <hr class="text-center p-4 text-[var(--cool-gray)]">
+                    <ul class="m-2">
+                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
+                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
+                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-between items-center p-4">
+                    <span>Total (per year)</span>
+                    <span>+$100/mo</span>
+                </div>
+
+
+            </section>
+            <!-- -->
 
             <!-- Dynamically add subscription and add-on selections here -->
 
@@ -209,12 +292,13 @@
 
             <div class="flex justify-between mb-5">
                 <button class="self-end">Previous</button>
-                <button class="rounded-sm bg-[var(--marine-blue)] text-white p-3">
+                <button id="nextBtn" type="submit" class="rounded-sm bg-[var(--marine-blue)] text-white p-3">
                     Next Step
                 </button>
             </div>
         </div>
-    </main>
+    </form>
+    <script src="index.js"></script>
 </body>
 
 </html>
