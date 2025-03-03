@@ -5,6 +5,10 @@ body {
   font-family: "Ubuntu";
   font-size: 16px;
 }
+label:has(input:checked) {
+  border-color: var(--purplish-blue);
+  background-color: var(--alabaster);
+}
 :root {
   /* primary colors */
   --marine-blue: hsl(213, 96%, 18%);

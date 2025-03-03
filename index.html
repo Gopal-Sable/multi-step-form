@@ -27,11 +27,11 @@
 </head>
 
 <body class="h-full bg-[var(--light-gray)]">
-    <form class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[50%]">
+    <form class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[1000px]">
         <!-- Sidebar start -->
 
         <aside id="steps-side-bar"
-            class="w-[40%] text-white flex flex-col rounded-[10px] bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-center bg-no-repeat bg-cover m-6">
+            class="w-[30%] text-white flex flex-col rounded-[10px] bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-center bg-no-repeat bg-cover m-6">
             <!-- <img src="/assets/images/bg-sidebar-desktop.svg" alt="" srcset=""> -->
             <div class="flex items-center px-8 mt-8 gap-4">
                 <div id="step1"
@@ -80,7 +80,7 @@
 
         <!-- Sidebar end -->
 
-        <div class="flex grow flex-col w-[60%] justify-between pr-10 font-semibold">
+        <div class="flex grow flex-col w-[70%] justify-between pr-10 mr-10 font-semibold">
             <!-- Step 1 start -->
             <section id="section1" class="flex flex-col text-[var(--marine-blue)] ">
                 <h1 class="text-3xl font-bold mt-12 ">Personal info</h1>
@@ -112,7 +112,7 @@
                             <label for="phone" class="">Phone Number</label>
                             <span class="text-[var(--strawberry-red)]"></span>
                         </div>
-                        <input type="number" id="phone" placeholder="e.g. +1 234 567 890"
+                        <input type="tel" id="phone" placeholder="e.g. +1 234 567 890"
                             class="border rounded-[10px] focus:border-[var(--purplish-blue)] outline-[var(--purplish-blue)] border-[var(--cool-gray)] mt-1 p-2" />
                     </div>
                 </div>
@@ -128,19 +128,15 @@
                     You have the option of monthly or yearly billing.
                 </p>
 
-                <div class="mt-6 flex flex-col gap-5">
-
-                </div>
-
-                <div id="plans" class="flex justify-between mt-4">
+                <div id="plans" class="flex gap-4 justify-between mt-10">
                     <!-- Arcade Plan -->
-                    <div class=" p-2 min-w-30">
+                    <div class="">
                         <input type="radio" checked id="plan-arcade" data-plan-name="Arcade" name="plan" value="9"
                             class="hidden peer">
                         <label for="plan-arcade"
-                            class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 hover:border-[var(--purplish-blue)] peer-checked:bg-[var(--magnolia)] peer-checked:border-[var(--purplish-blue)]">
-                            <img class="mb-5 mr-auto" src="assets/images/icon-arcade.svg" alt="">
-                            <div class="mr-12 mt-12">
+                            class="flex flex-col min-w-[150px] items-start cursor-pointer rounded-2xl p-2 border border-gray-300 hover:border-[var(--purplish-blue)] peer-checked:bg-[var(--magnolia)] peer-checked:border-[var(--purplish-blue)]">
+                            <img class="m-2" src="assets/images/icon-arcade.svg" alt="">
+                            <div class="mt-15">
                                 <h4>Arcade</h4>
                                 <span class="text-[var(--cool-gray)] font-medium">$9/mo</span>
                                 <p hidden class="font-normal text-s">2-months free</p>
@@ -149,13 +145,13 @@
                     </div>
 
                     <!-- Advanced Plan -->
-                    <div class=" p-2 min-w-30">
+                    <div class="">
                         <input type="radio" id="plan-advanced" data-plan-name="Advanced" name="plan" value="12"
                             class="hidden peer">
                         <label for="plan-advanced"
-                            class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 hover:border-[var(--purplish-blue)] peer-checked:bg-[var(--magnolia)] peer-checked:border-[var(--purplish-blue)]">
-                            <img class="mb-5 mr-auto" src="assets/images/icon-advanced.svg" alt="">
-                            <div class="mr-12 mt-12">
+                            class="flex flex-col min-w-[150px] p-2 items-start cursor-pointer rounded-2xl border border-gray-300 hover:border-[var(--purplish-blue)] peer-checked:bg-[var(--magnolia)] peer-checked:border-[var(--purplish-blue)]">
+                            <img class="m-2" src="assets/images/icon-advanced.svg" alt="">
+                            <div class="mt-15">
                                 <h4>Advanced</h4>
                                 <span class="text-[var(--cool-gray)] font-medium">$12/mo</span>
                                 <p hidden class="font-normal text-s">2-months free</p>
@@ -164,13 +160,13 @@
                     </div>
 
                     <!-- Pro Plan -->
-                    <div class="p-2 min-w-40">
+                    <div class="">
                         <input type="radio" id="plan-pro" data-plan-name="Pro" name="plan" value="15"
                             class="hidden peer">
                         <label for="plan-pro"
-                            class="flex flex-col items-start cursor-pointer p-4 rounded-2xl border border-gray-300 hover:border-[var(--purplish-blue)] peer-checked:bg-[var(--magnolia)] peer-checked:border-[var(--purplish-blue)]">
-                            <img class="mb-5 mr-auto" src="assets/images/icon-pro.svg" alt="">
-                            <div class="mr-12 mt-12">
+                            class="flex flex-col min-w-[150px] p-2 items-start cursor-pointer rounded-2xl border border-gray-300 hover:border-[var(--purplish-blue)] peer-checked:bg-[var(--magnolia)] peer-checked:border-[var(--purplish-blue)]">
+                            <img class="m-2" src="assets/images/icon-pro.svg" alt="">
+                            <div class="mt-15">
                                 <h4>Pro</h4>
                                 <span class="text-[var(--cool-gray)] font-medium">$15/mo</span>
                                 <p hidden class="font-normal text-s">2-months free</p>
@@ -204,45 +200,43 @@
                     Add-ons help enhance your gaming experience.
                 </p>
 
-
                 <div class="flex mt-10 flex-col gap-4">
-                    <div
-                        class="flex border border-[var(--cool-gray)] p-4 group hover:border-[var(--purplish-blue)] rounded-2xl">
-                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Online service"
-                            name="online-service" id="online-service">
-                        <label for="online-service" class="flex justify-between w-full items-center ">
+                    <label for="online-service"
+                        class="flex border border-[var(--cool-gray)] p-4 group hover:border-[var(--purplish-blue)] rounded-2xl cursor-pointer">
+                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Online service" name="online-service"
+                            id="online-service">
+                        <div class="flex justify-between w-full items-center">
                             <div>
                                 <h4 class="text-[var(--marine-blue)] font-bold"> Online Service</h4>
-                                <p class="text-[var(--cool-gray)]">Access to multiplayer games </p>
+                                <p class="text-[var(--cool-gray)]">Access to multiplayer games</p>
                             </div>
                             <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
-                        </label>
-                    </div>
-                    <div
-                        class="flex border border-[var(--cool-gray)] p-4 rounded-2xl hover:border-[var(--purplish-blue)]">
-                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Larger storage" name="add-ons"
-                            id="storage">
-                        <label for="storage" class="flex justify-between w-full items-center">
+                        </div>
+                    </label>
+                
+                    <label for="storage"
+                        class="flex border border-[var(--cool-gray)] p-4 rounded-2xl hover:border-[var(--purplish-blue)] cursor-pointer">
+                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Larger storage" name="add-ons" id="storage">
+                        <div class="flex justify-between w-full items-center">
                             <div>
-                                <h4 class="text-[var(--marine-blue)] font-bold">Larger storage </h4>
-                                <p class="text-[var(--cool-gray)]">Extra 1TB of cloud save </p>
+                                <h4 class="text-[var(--marine-blue)] font-bold">Larger storage</h4>
+                                <p class="text-[var(--cool-gray)]">Extra 1TB of cloud save</p>
                             </div>
                             <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
-                        </label>
-                    </div>
-                    <div
-                        class="flex border border-[var(--cool-gray)] p-4 rounded-2xl hover:border-[var(--purplish-blue)]">
-                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Customizable profile"
-                            name="add-ons" id="profile">
-                        <label for="profile" class="flex justify-between w-full items-center">
+                        </div>
+                    </label>
+                
+                    <label for="profile"
+                        class="flex border border-[var(--cool-gray)] p-4 rounded-2xl hover:border-[var(--purplish-blue)] cursor-pointer">
+                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Customizable profile" name="add-ons" id="profile">
+                        <div class="flex justify-between w-full items-center">
                             <div>
-                                <h4 class="text-[var(--marine-blue)] font-bold"> Customizable Profile </h4>
-                                <p class="text-[var(--cool-gray)]">Custom theme on your profile
-                                </p>
+                                <h4 class="text-[var(--marine-blue)] font-bold"> Customizable Profile</h4>
+                                <p class="text-[var(--cool-gray)]">Custom theme on your profile</p>
                             </div>
                             <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
-                        </label>
-                    </div>
+                        </div>
+                    </label>
                 </div>
 
 
@@ -270,9 +264,6 @@
                     </div>
                     <hr class="text-center p-4 w-[95%] mx-auto text-[var(--cool-gray)]">
                     <ul class="text-[var(--cool-gray)] font-normal">
-                        <!-- <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
-                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li>
-                        <li class="flex justify-between"><span>storage</span> <span>$10/mo</span></li> -->
                     </ul>
                 </div>
 
