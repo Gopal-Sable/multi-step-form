@@ -17,7 +17,6 @@
 
 #remove all assest design and information for now
 design/
-assets/
 *.md
 node_modules/
 *.json
