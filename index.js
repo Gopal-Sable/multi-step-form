@@ -49,7 +49,7 @@ function handleClick(value, e) {
   }
   nextBtn.textContent = "Next Step";
   nextBtn.classList.toggle("bg-[var(--marine-blue)]", true);
-  nextBtn.classList.toggle("bg-[var(--purplish-blue)]", false)
+  nextBtn.classList.toggle("bg-[var(--purplish-blue)]", false);
   if (step === 4) {
     nextBtn.textContent = "Confirm";
     nextBtn.classList.toggle("bg-[var(--purplish-blue)]", true);
@@ -168,8 +168,11 @@ prevBtn.addEventListener("click", (e) => handleClick(-1, e));
 changeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   updateStepVisibility(4, false);
+  // changing next button style and color
+  nextBtn.textContent = "Next Step";
+  nextBtn.classList.toggle("bg-[var(--marine-blue)]", true);
+  nextBtn.classList.toggle("bg-[var(--purplish-blue)]", false);
   step = 2;
   updateStepVisibility(step, true);
-  buttonsSection.firstElementChild.classList.remove("invisible");
 });
 plansSwitchBtn.addEventListener("change", updatePricing);
