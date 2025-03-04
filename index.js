@@ -47,6 +47,7 @@ function handleClick(value, e) {
     step += value;
     updateStepVisibility(step, true);
   }
+  // handling button color and text for step 4
   nextBtn.textContent = "Next Step";
   nextBtn.classList.toggle("bg-[var(--marine-blue)]", true);
   nextBtn.classList.toggle("bg-[var(--purplish-blue)]", false);
