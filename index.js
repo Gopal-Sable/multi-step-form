@@ -151,7 +151,7 @@ function validate() {
 
   if (!/^\d{10}$/.test(phone.value)) {
     isValid = false;
-    showErrors(true, phone, "Please enter valid phone number");
+    showErrors(true, phone, "Please enter valid 10 digit phone number");
   } else {
     showErrors(false, phone);
   }
