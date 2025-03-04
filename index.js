@@ -48,10 +48,12 @@ function handleClick(value, e) {
     updateStepVisibility(step, true);
   }
   nextBtn.textContent = "Next Step";
-  nextBtn.classList.add("bg-[var(--marine-blue)]");
+  nextBtn.classList.toggle("bg-[var(--marine-blue)]", true);
+  nextBtn.classList.toggle("bg-[var(--purplish-blue)]", false)
   if (step === 4) {
     nextBtn.textContent = "Confirm";
-    nextBtn.classList.add("bg-[var(--purplish-blue)]");
+    nextBtn.classList.toggle("bg-[var(--purplish-blue)]", true);
+    nextBtn.classList.toggle("bg-[var(--marine-blue)]", false);
   }
   buttonsSection.firstElementChild.classList.toggle("invisible", step === 1);
 
