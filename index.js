@@ -1,208 +1,173 @@
+const prevBtn = document.getElementById("prevBtn");
+
 const nextBtn = document.getElementById("nextBtn");
+const changeBtn = document.getElementById("change-btn");
+const plansSwitchBtn = document.getElementById("plans-switch");
+const form = document.getElementById("form");
+const buttonsSection = document.getElementById("buttonsSection");
+const monthLabel = document.getElementById("month-label");
+const yearLabel = document.getElementById("year-label");
+const totalContainer = document.getElementById("total-amount-container");
+const selectedPlanAmount = document.getElementById("selected-plan-amount");
+const finalPlanHeading = document.getElementById("final-plan-heading");
+const addOnsList = document.querySelector("ul");
 const stepsSideBar = document.getElementById("steps-side-bar");
 const userName = document.getElementById("name");
 const email = document.getElementById("email");
 const phone = document.getElementById("phone");
-const prevBtn = document.getElementById("prevBtn");
-const plansSwitchBtn = document.getElementById("plans-switch");
-const changeBtn = document.getElementById("change-btn");
 
-changeBtn.onclick = (e) => {
-  e.preventDefault();
-  handleClick(-1, e);
-  handleClick(-1, e);
-};
-const toggleAmount = (e) => {
-  const monthLabel = document.getElementById("month-label");
-  const yearLabel = document.getElementById("year-label");
-  if (plansSwitchBtn.checked) {
-    // checked means year
-    yearLabel.classList.remove("text-[var(--cool-gray)]");
-    monthLabel.classList.add("text-[var(--cool-gray)]");
-    for (const key in plansData.year) {
-      const inputEle = document.getElementById(key);
-      inputEle.value = plansData.year[key];
-      let showAmountEle = inputEle.nextElementSibling.lastElementChild;
-      showAmountEle.children[1].innerHTML = `$${inputEle.value}/yr`;
-      showAmountEle.children[2].hidden = false;
-    }
-
-    for (const key in addOnsData.year) {
-      let checkboxEle = document.getElementById(key);
-      let value = addOnsData.year[key];
-      checkboxEle.value = value;
-      checkboxEle.nextElementSibling.lastElementChild.textContent = `+$${value}/yr`;
-    }
-  } else {
-    monthLabel.classList.remove("text-[var(--cool-gray)]");
-    yearLabel.classList.add("text-[var(--cool-gray)]");
-    for (const key in plansData.month) {
-      const inputEle = document.getElementById(key);
-      inputEle.value = plansData.month[key];
-      let showAmountEle = inputEle.nextElementSibling.lastElementChild;
-      showAmountEle.children[1].innerHTML = `$${inputEle.value}/mo`;
-      showAmountEle.children[2].hidden = true;
-    }
-    for (const key in addOnsData.month) {
-      let checkboxEle = document.getElementById(key);
-      let value = addOnsData.month[key];
-      checkboxEle.value = value;
-      checkboxEle.nextElementSibling.lastElementChild.textContent = `+$${value}/mo`;
-    }
-  }
-  calculateAmount();
-};
-plansSwitchBtn.addEventListener("change", toggleAmount);
-
-const addOnsData = {
-  month: {
-    "online-service": 1,
-    storage: 2,
-    profile: 2,
-  },
-  year: {
-    "online-service": 10,
-    storage: 20,
-    profile: 20,
-  },
-};
+let step = 1;
 
 const plansData = {
-  year: {
-    "plan-arcade": 90,
-    "plan-advanced": 120,
-    "plan-pro": 150,
-  },
-  month: {
-    "plan-arcade": 9,
-    "plan-advanced": 12,
-    "plan-pro": 15,
-  },
+  month: { "plan-arcade": 9, "plan-advanced": 12, "plan-pro": 15 },
+  year: { "plan-arcade": 90, "plan-advanced": 120, "plan-pro": 150 },
 };
+
+const addOnsData = {
+  month: { "online-service": 1, storage: 2, profile: 2 },
+  year: { "online-service": 10, storage: 20, profile: 20 },
+};
+
+function handleClick(value, e) {
+  e.preventDefault();
+  if (!validate()) {
+    return;
+  }
+
+  if (step === 4 && value === 1) {
+    buttonsSection.hidden = true;
+    updateStepVisibility(step, false);
+    step++;
+    updateStepVisibility(step, true);
+    return;
+  }
+
+  if ((step < 4 && value === 1) || (value === -1 && step > 1)) {
+    updateStepVisibility(step, false);
+    step += value;
+    updateStepVisibility(step, true);
+  }
+  nextBtn.textContent = "Next Step";
+  nextBtn.classList.add("bg-[var(--marine-blue)]");
+  if (step === 4) {
+    nextBtn.textContent = "Confirm";
+    nextBtn.classList.add("bg-[var(--purplish-blue)]");
+  }
+  buttonsSection.firstElementChild.classList.toggle("invisible", step === 1);
+
+  updatePricing();
+}
+
+function updatePricing() {
+  const isYearly = plansSwitchBtn.checked;
+  const duration = isYearly ? "yr" : "mo";
+  const selectedPlan = document.querySelector("input[type=radio]:checked");
+  const selectedAddOns = document.querySelectorAll(
+    "input[type=checkbox]:checked"
+  );
+
+  // Update Labels
+  monthLabel.classList.toggle("text-[var(--cool-gray)]", isYearly);
+  yearLabel.classList.toggle("text-[var(--cool-gray)]", !isYearly);
+
+  // Update Plan Pricing
+  Object.entries(plansData[isYearly ? "year" : "month"]).forEach(
+    ([id, price]) => {
+      const inputEle = document.getElementById(id);
+      inputEle.value = price;
+      const amountEl = inputEle.nextElementSibling.lastElementChild;
+      amountEl.children[1].textContent = `$${price}/${duration}`;
+      amountEl.children[2].hidden = !isYearly;
+    }
+  );
+
+  // Update Add-On Pricing
+  Object.entries(addOnsData[isYearly ? "year" : "month"]).forEach(
+    ([id, price]) => {
+      const checkboxEle = document.getElementById(id);
+      checkboxEle.value = price;
+      checkboxEle.nextElementSibling.lastElementChild.textContent = `+$${price}/${duration}`;
+    }
+  );
+
+  // Update Final Amounts
+  let totalAmount = parseInt(selectedPlan?.value || 0);
+  selectedPlanAmount.textContent = `$${totalAmount}/${duration}`;
+  finalPlanHeading.textContent = `${selectedPlan?.dataset.planName} (${
+    isYearly ? "Yearly" : "Monthly"
+  })`;
+
+  addOnsList.innerHTML = "";
+  const hrTag = document.getElementsByTagName("hr")[0];
+  hrTag.hidden = true;
+  selectedAddOns.forEach((addOn) => {
+    if (addOn.id !== "plans-switch") {
+      hrTag.hidden = false;
+      totalAmount += parseInt(addOn.value);
+      addOnsList.innerHTML += `<li class="flex justify-between m-2">
+          <span>${addOn.dataset.addOnName}</span> 
+          <span>$${addOn.value}/${duration}</span>
+        </li>`;
+    }
+  });
+
+  totalContainer.firstElementChild.textContent = `Total (per ${
+    isYearly ? "year" : "month"
+  })`;
+  totalContainer.lastElementChild.textContent = `+$${totalAmount}/${duration}`;
+}
+
+function updateStepVisibility(step, isVisible) {
+  const section = document.getElementById(`section${step}`);
+  const stepEl = document.getElementById(`step${step === 5 ? step - 1 : step}`);
+
+  if (section) section.hidden = !isVisible;
+  if (stepEl) {
+    stepEl.classList.toggle("bg-[var(--light-blue)]", isVisible);
+    stepEl.classList.toggle("text-black", isVisible);
+  }
+}
 
 function validate() {
   let isValid = true;
-  if (userName.value == "") {
-    userName.previousElementSibling.lastElementChild.textContent =
-      "Name can not be empty";
-    userName.focus();
-    userName.classList.add("border-[var(--strawberry-red)]");
+  if (userName.value.trim() == "") {
+    showErrors(true, userName, "Please enter name");
     isValid = false;
   } else {
-    userName.previousElementSibling.lastElementChild.textContent = "";
-    userName.classList.remove("border-[var(--strawberry-red)]");
+    showErrors(false, userName);
   }
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!emailRegex.test(email.value)) {
-    email.previousElementSibling.lastElementChild.textContent =
-      "Please enter a correct email ID";
-    email.focus();
-    email.classList.add("border-[var(--strawberry-red)]");
+    showErrors(true, email, "Please enter a correct email ID");
     isValid = false;
   } else {
-    email.classList.remove("border-[var(--strawberry-red)]");
-    email.previousElementSibling.lastElementChild.textContent = "";
+    showErrors(false, email);
   }
 
-  if (!/^\d+$/.test(phone.value) || phone.value.length != 10) {
-    phone.previousElementSibling.lastElementChild.textContent =
-      "Please enter valid phone number";
+  if (!/^\d{10}$/.test(phone.value)) {
     isValid = false;
-    phone.classList.add("border-[var(--strawberry-red)]");
-    phone.focus();
+    showErrors(true, phone, "Please enter valid phone number");
   } else {
-    phone.classList.remove("border-[var(--strawberry-red)]");
-    phone.previousElementSibling.lastElementChild.textContent = "";
+    showErrors(false, phone);
   }
   return isValid;
 }
 
-let step = 1;
-
-function calculateAmount() {
-  let totalAmount = 0;
-  const selectedPlan = document.querySelector("input[type=radio]:checked");
-  const selectedPlanAmount = document.getElementById("selected-plan-amount");
-  const finalPlanHeading = document.getElementById("final-plan-heading");
-  let planDuration = plansSwitchBtn.checked ? "yr" : "mo";
-  selectedPlanAmount.textContent = `$${selectedPlan.value}/${planDuration}`;
-  const ul = document.querySelector("ul");
-  let selectedAddOns = document.querySelectorAll(
-    "input[type=checkbox]:checked"
-  );
-  ul.previousElementSibling.hidden = true;
-  if (selectedAddOns.length > 0) {
-    ul.previousElementSibling.hidden = false;
-  }
-
-  finalPlanHeading.textContent = `${selectedPlan.dataset.planName} (${
-    plansSwitchBtn.checked ? "Yearly" : "Monthly"
-  })`;
-
-  ul.textContent = "";
-  totalAmount += parseInt(selectedPlan.value);
-  selectedAddOns.forEach((checkedEle) => {
-    if (checkedEle.id != "plans-switch") {
-      let li = document.createElement("li");
-      li.classList.add("flex", "justify-between", "m-2");
-      totalAmount += parseInt(checkedEle.value);
-      li.innerHTML = `<span>${checkedEle.dataset.addOnName}</span> <span>$${checkedEle.value}/${planDuration}</span>`;
-      ul.appendChild(li);
-    }
-  });
-
-  const totalContainer = document.getElementById("total-amount-container");
-  totalContainer.lastElementChild.textContent = `+$${totalAmount}/${planDuration}`;
-  totalContainer.firstElementChild.textContent = `Total (per ${
-    plansSwitchBtn.checked ? "year" : "month"
-  })`;
-  //   console.log(selectedPlan, plansSwitchBtn.checked ? "year" : "month");
+function showErrors(isError, element, message = "") {
+  element.previousElementSibling.lastElementChild.textContent = message;
+  element.classList.toggle("border-[var(--strawberry-red)]", isError);
+  isError && element.focus();
 }
-
-function handleClick(value, e) {
+// Event Listeners
+nextBtn.addEventListener("click", (e) => handleClick(1, e));
+prevBtn.addEventListener("click", (e) => handleClick(-1, e));
+changeBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  // if (!validate()) return;
-  const btnSection = document.querySelector("#buttonsSection");
-
-  if (step == 4 && value == 1) {
-    btnSection.hidden = true;
-    let currentSection = document.getElementById(`section${step}`);
-    currentSection.hidden = true;
-    step++;
-    currentSection = document.getElementById(`section${step}`);
-    currentSection.hidden = false;
-  }
-  if ((step < 4 && value == 1) || (value == -1 && step > 1)) {
-    let currentStep = document.getElementById(`step${step}`);
-    let currentSection = document.getElementById(`section${step}`);
-    currentStep.classList.remove("bg-[var(--light-blue)]", "text-black");
-    console.log(currentSection);
-
-    currentSection.hidden = true;
-
-    step += parseInt(value);
-    currentStep = document.getElementById(`step${step}`);
-    currentSection = document.getElementById(`section${step}`);
-
-    // currentStep.classList.remove("bg-[var(--light-blue)]", "text-black");
-    currentStep.classList.add("bg-[var(--light-blue)]", "text-black");
-    currentSection.hidden = false;
-  }
-  if (step != 1) {
-    btnSection.firstElementChild.classList.remove("invisible");
-  } else {
-    btnSection.firstElementChild.classList.add("invisible");
-  }
-  toggleAmount();
-  calculateAmount();
-}
-prevBtn.addEventListener("click", (e) => {
-  e.preventDefault;
-  handleClick(-1, e);
+  updateStepVisibility(4, false);
+  step = 2;
+  updateStepVisibility(step, true);
+  buttonsSection.firstElementChild.classList.remove("invisible");
 });
-nextBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  handleClick(1, e);
-});
+plansSwitchBtn.addEventListener("change", updatePricing);

@@ -27,7 +27,7 @@
 </head>
 
 <body class="h-full bg-[var(--light-gray)]">
-    <form class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[1000px]">
+    <form id="form" class="min-h-[70vh]  rounded-2xl m-[auto] mt-24 gap-x-14 bg-white flex w-[1000px]">
         <!-- Sidebar start -->
 
         <aside id="steps-side-bar"
@@ -203,8 +203,8 @@
                 <div class="flex mt-10 flex-col gap-4">
                     <label for="online-service"
                         class="flex border border-[var(--cool-gray)] p-4 group hover:border-[var(--purplish-blue)] rounded-2xl cursor-pointer">
-                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Online service" name="online-service"
-                            id="online-service">
+                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Online service"
+                            name="online-service" id="online-service">
                         <div class="flex justify-between w-full items-center">
                             <div>
                                 <h4 class="text-[var(--marine-blue)] font-bold"> Online Service</h4>
@@ -213,10 +213,11 @@
                             <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
                         </div>
                     </label>
-                
+
                     <label for="storage"
                         class="flex border border-[var(--cool-gray)] p-4 rounded-2xl hover:border-[var(--purplish-blue)] cursor-pointer">
-                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Larger storage" name="add-ons" id="storage">
+                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Larger storage" name="add-ons"
+                            id="storage">
                         <div class="flex justify-between w-full items-center">
                             <div>
                                 <h4 class="text-[var(--marine-blue)] font-bold">Larger storage</h4>
@@ -225,10 +226,11 @@
                             <span class="text-[var(--purplish-blue)] font-semibold">+$1/mo</span>
                         </div>
                     </label>
-                
+
                     <label for="profile"
                         class="flex border border-[var(--cool-gray)] p-4 rounded-2xl hover:border-[var(--purplish-blue)] cursor-pointer">
-                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Customizable profile" name="add-ons" id="profile">
+                        <input type="checkbox" class="m-4 w-[30px]" data-add-on-name="Customizable profile"
+                            name="add-ons" id="profile">
                         <div class="flex justify-between w-full items-center">
                             <div>
                                 <h4 class="text-[var(--marine-blue)] font-bold"> Customizable Profile</h4>
@@ -262,7 +264,7 @@
                         </div>
                         <span id="selected-plan-amount">$9/mo</span>
                     </div>
-                    <hr class="text-center p-4 w-[95%] mx-auto text-[var(--cool-gray)]">
+                    <hr class="text-center w-[95%] mx-auto my-1 text-[var(--cool-gray)]">
                     <ul class="text-[var(--cool-gray)] font-normal">
                     </ul>
                 </div>
@@ -291,9 +293,11 @@
             <!-- Step 5 end -->
 
             <div id="buttonsSection" class="flex justify-between mb-5">
-                <button id="prevBtn" class="invisible text-[var(--cool-gray)] hover:text-[var(--marine-blue)]">Go
+                <button id="prevBtn"
+                    class="invisible cursor-pointer text-[var(--cool-gray)] hover:text-[var(--marine-blue)]">Go
                     Back</button>
-                <button id="nextBtn" type="submit" class="rounded-sm bg-[var(--marine-blue)] text-white p-3">
+                <button id="nextBtn" type="submit"
+                    class="rounded-sm cursor-pointer bg-[var(--marine-blue)] text-white p-3">
                     Next Step
                 </button>
             </div>
